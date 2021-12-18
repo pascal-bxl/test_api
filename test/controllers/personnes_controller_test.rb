@@ -18,6 +18,16 @@ class PersonnesControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
+  test "shouldn't create personne without nom" do
+    post personnes_url, params: { personne: { nom: '', prenom: @personne.prenom } }, as: :json
+    assert_response 422
+  end
+
+  test "shouldn't create personne without prenom" do
+    post personnes_url, params: { personne: { nom: @personne.nom, prenom: '' } }, as: :json
+    assert_response 422
+  end
+
   test "should show personne" do
     get personne_url(@personne), as: :json
     assert_response :success
@@ -26,6 +36,16 @@ class PersonnesControllerTest < ActionDispatch::IntegrationTest
   test "should update personne" do
     patch personne_url(@personne), params: { personne: { nom: @personne.nom, prenom: @personne.prenom } }, as: :json
     assert_response 200
+  end
+
+  test "shouldn't update personne without nom" do
+    patch personne_url(@personne), params: { personne: { nom: '', prenom: @personne.prenom } }, as: :json
+    assert_response 422
+  end
+
+  test "shouldn't update personne without prenom" do
+    patch personne_url(@personne), params: { personne: { nom: @personne.nom, prenom: '' } }, as: :json
+    assert_response 422
   end
 
   test "should destroy personne" do
