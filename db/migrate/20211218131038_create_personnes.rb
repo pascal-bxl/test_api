@@ -1,6 +1,7 @@
 class CreatePersonnes < ActiveRecord::Migration[5.2]
   def change
-    create_table :personnes do |t|
+    enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
+    create_table :personnes, id: :uuid, default: 'gen_random_uuid()' do |t|
       t.string :prenom
       t.string :nom
 
