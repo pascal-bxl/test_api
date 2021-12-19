@@ -1,24 +1,10 @@
-# README
+```
+rails test
+Started
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Finished in 0.35210s
+11 tests, 13 assertions, 0 failures, 0 errors, 0 skips
 
-Things you may want to cover:
+Process finished with exit code 0
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
