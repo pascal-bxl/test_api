@@ -7,3 +7,7 @@ one:
 two:
   prenom: MyString
   nom: MyString
+
+three:
+  prenom: Pascal
+  nom: Freché

@@ -10,6 +10,20 @@ class PersonnesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get filtered prenom index" do
+    get personnes_url(filter: 'cal'), as: :json
+
+    data = JSON.parse(@response.body)
+    assert_equal 'Pascal', data.first["prenom"]
+  end
+
+  test "should get filtered nom index" do
+    get personnes_url(filter: 'fre'), as: :json
+
+    data = JSON.parse(@response.body)
+    assert_equal 'Pascal', data.first["prenom"]
+  end
+
   test "should create personne" do
     assert_difference('Personne.count') do
       post personnes_url, params: { personne: { nom: @personne.nom, prenom: @personne.prenom } }, as: :json

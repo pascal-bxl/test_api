@@ -5,10 +5,14 @@ class PersonnesController < ApplicationController
   def index
     @personnes = Personne.all
 
+    if params[:filter]
+      @personnes = @personnes.filter(params[:filter])
+    end
+
     render json: @personnes
   end
 
-  # GET /personnes/1
+  # GET /personnes/uuid
   def show
     render json: @personne
   end
@@ -24,7 +28,7 @@ class PersonnesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /personnes/1
+  # PATCH/PUT /personnes/uuid
   def update
     if @personne.update(personne_params)
       render json: @personne
@@ -33,7 +37,7 @@ class PersonnesController < ApplicationController
     end
   end
 
-  # DELETE /personnes/1
+  # DELETE /personnes/uuid
   def destroy
     @personne.destroy
   end
