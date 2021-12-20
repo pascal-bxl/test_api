@@ -21,7 +21,7 @@ class PersonnesControllerTest < ActionDispatch::IntegrationTest
     get personnes_url(filter: 'fre'), as: :json
 
     data = JSON.parse(@response.body)
-    assert_equal 'Pascal', data.first["prenom"]
+    assert_equal 'Freché', data.first["nom"]
   end
 
   test "should create personne" do
